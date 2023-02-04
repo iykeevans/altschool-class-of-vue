@@ -57,7 +57,6 @@ export default {
       console.log("messageRef", messageRef.value.textContent);
       messageRef.value.classList.add("text-red");
       messageRef.value.textContent = "Thank you Adebayo!";
-      // messageRef.value;
     };
 
     return { books, book, addBook, messageRef, updateMessage };
