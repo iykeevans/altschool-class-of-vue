@@ -1,19 +1,20 @@
 <script>
+import ColorPickerGame from "./components/ColorPickerGame.vue";
 import Recap_01_02_2023 from "./components/Recap_01_02_2023.vue";
 
 export default {
-  components: {
-    Recap_01_02_2023,
-  },
+  components: { ColorPickerGame, Recap_01_02_2023 },
   data() {
-    return {};
+    return {
+      currentLesson: "color-picker-game",
+    };
   },
-  methods: {},
 };
 </script>
 
 <template>
-  <Recap_01_02_2023 />
+  <ColorPickerGame v-if="currentLesson === 'color-picker-game'" />
+  <Recap_01_02_2023 v-else />
 </template>
 
 <style scoped></style>

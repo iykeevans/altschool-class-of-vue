@@ -1,20 +1,28 @@
 <template>
-  <div>{{ name }}</div>
+  <div>{{ selectedColor }}</div>
 
   <input v-model="searchValue" />
 
-  <!-- <button v-on:click="changeName">Change Name</button> -->
   <div v-for="color in filteredColors" :key="color">
-    {{ color }}
+    <Color :value="color" @change-selected-color="selectedColor = $event">
+      <template #color="slotProps">{{ slotProps.value }}</template>
+
+      <template #footer>
+        <div style="font-size: 8px">color details</div>
+      </template>
+    </Color>
   </div>
 </template>
 
 <script>
+import Color from "./Color.vue";
 export default {
   name: "Recap_01_02_2023",
+  components: { Color },
   data() {
     return {
       name: "Hello World",
+      selectedColor: "No color selected..",
       colors: ["red", "blue", "green", "yellow", "pink", "black", "gold"],
       filteredColors: [
         "red",
@@ -29,13 +37,7 @@ export default {
     };
   },
   methods: {
-    changeName() {
-      this.name = "Adebayo";
-    },
     filterString() {
-      //   this.colors = this.colors.filter((item) =>
-      //     item.toLowerCase().includes(this.searchValue.toLowerCase())
-      //   );
       // loop through the colors
       // get color
       // do check to confirm if searchvalue is in the currentColor
@@ -45,7 +47,7 @@ export default {
       if (this.searchValue.length === 0) {
         return this.colors;
       }
-      debugger;
+
       for (let index = 0; index < this.colors.length; index++) {
         const color = this.colors[index];
 
@@ -72,10 +74,13 @@ export default {
     },
   },
   computed: {
-    filteredColors() {
+    filteredColorsComputed() {
       return this.colors.filter((item) =>
         item.toLowerCase().includes(this.searchValue.toLowerCase())
       );
+    },
+    getGreeting() {
+      return "Hello guys";
     },
   },
 };
