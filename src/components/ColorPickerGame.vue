@@ -1,36 +1,33 @@
 <template>
   <h1>Color Picker Game</h1>
 
-  <div>{{ message }}</div>
+  <div class="message">{{ message }}</div>
 
   <button v-for="color in colors" :key="color" @click="matchColor(color)">
     {{ color }}
   </button>
 </template>
 
-<script>
+<script setup>
 import { ref, reactive } from "@vue/reactivity";
+import { useColorPicker } from "../composables/useColorPicker";
+const colors = ["dodgerblue", "aquagreen", "aliceblue", "yellow"];
 
-export default {
-  setup() {
-    const colors = ["green", "red", "blue", "purple"];
-    let message = ref("Pick a color...");
-
-    const matchColor = (value) => {
-      // do a random color based on the array index;
-      const randomNumber = Math.floor(Math.random() * 3) + 1; //between 1 - 4
-
-      if (colors[randomNumber] === value) {
-        message.value = `You win... [answer: ${colors[randomNumber]}]`;
-        return;
-      }
-
-      message.value = `You loose [answer: ${colors[randomNumber]}]`;
-    };
-
-    return { colors, message, matchColor };
-  },
-};
+const { message, matchColor } = useColorPicker(colors);
 </script>
 
-<style></style>
+<style scoped>
+.message {
+  font-size: 14px;
+  justify-self: center;
+  align-self: center;
+}
+
+button {
+  border: none;
+  padding: 8px 6px;
+  font-size: 16px;
+  margin: 4px;
+  cursor: pointer;
+}
+</style>
