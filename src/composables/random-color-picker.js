@@ -1,4 +1,4 @@
-import { ref, computed } from "@vue/composition-api";
+import { ref, computed } from "vue";
 
 export function randomColorPicker() {
   const colors = ref(["green", "red", "blue", "purple"]);
