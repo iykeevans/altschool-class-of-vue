@@ -14,23 +14,24 @@
 import { ref } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
 export default {
-  data() {
-    return {
-      posts: [],
-    };
-  },
+  setup() {
+    const posts = ref([]);
 
-  methods: {
-    fetchPosts() {
+    const fetchPosts = () => {
       const endpoint = "https://jsonplaceholder.typicode.com/todos";
 
       fetch(endpoint)
         .then((response) => response.json())
-        .then((json) => (this.posts = json));
-    },
-  },
-  mounted() {
-    this.fetchPosts();
+        .then((json) => (posts.value = json));
+    };
+
+    onMounted(() => {
+      fetchPosts();
+    });
+
+    return {
+      posts,
+    };
   },
 };
 </script>
