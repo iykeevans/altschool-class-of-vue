@@ -13,8 +13,18 @@ export default {
 </script>
 
 <template>
-  <ColorPickerGame v-if="currentLesson === 'color-picker-game'" />
-  <Recap_01_02_2023 v-else />
+  <router-view />
 </template>
 
-<style scoped></style>
+<style scoped>
+.slide-enter-active,
+.slide-leave-active {
+  transition: opacity 1s, transform 1s;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  opacity: 0;
+  transition: translateX(-30%);
+}
+</style>
