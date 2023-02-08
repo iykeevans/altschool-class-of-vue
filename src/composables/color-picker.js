@@ -2,7 +2,7 @@ import { ref } from 'vue'
 
 const useColorPicker = () => {
     const message = ref('Pick a color')
-    const colors = ref(['green', 'red', 'blue', 'purple'])
+    const colors = ['green', 'red', 'blue', 'purple']
 
     const matchColor = (color) => {
         const randomColor =
