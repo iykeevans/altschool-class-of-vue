@@ -1,4 +1,8 @@
-<template>Welcome to the HomePage</template>
+<template>
+  <div>
+    <h1>Welcome to the HomePage</h1>
+  </div>
+</template>
 
 <script>
 export default {};
