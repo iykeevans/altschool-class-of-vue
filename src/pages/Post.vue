@@ -4,24 +4,32 @@
 </template>
 
 <script>
+import { ref } from "@vue/reactivity";
+import { useRoute } from "vue-router";
+import { onMounted } from "@vue/runtime-core";
 export default {
-  data() {
-    return {
-      post: {},
-    };
-  },
-  methods: {
-    fetchPost() {
-      const { postId } = this.$route.params;
+  setup() {
+    const post = ref({});
+
+    // we don't have access to this in the composition API so lets use a hook
+    const route = useRoute();
+
+    const fetchPost = () => {
+      const { postId } = route.params;
       const endpoint = `https://jsonplaceholder.typicode.com/todos/${postId}`;
 
       fetch(endpoint)
         .then((response) => response.json())
-        .then((json) => (this.post = json));
-    },
-  },
-  mounted() {
-    this.fetchPost();
+        .then((json) => (post.value = json));
+    };
+
+    onMounted(() => {
+      fetchPost();
+    });
+
+    return {
+      post,
+    };
   },
 };
 </script>
