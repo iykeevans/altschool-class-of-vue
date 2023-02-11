@@ -1,6 +1,6 @@
 <template>
-  <h1>POST {{ post.id }}</h1>
-  <p>{{ post.title }}</p>
+  <h1>{{ post.title }}</h1>
+  <p>{{ post.body }}</p>
 </template>
 
 <script>
@@ -16,7 +16,7 @@ export default {
 
     const fetchPost = () => {
       const { postId } = route.params;
-      const endpoint = `https://jsonplaceholder.typicode.com/todos/${postId}`;
+      const endpoint = `https://dummyjson.com/posts/${postId}`;
 
       fetch(endpoint)
         .then((response) => response.json())
