@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from "vue-router";
 //import pages here
 import Dashboard from "../layouts/Dashboard.vue";
 import AuthRoutes from "./AuthRoutes";
+import Counter from "@/pages/Counter.vue";
 
 const isAuthenticated = () => !!localStorage.getItem("token");
 
@@ -14,6 +15,11 @@ const routes = [
     path: "/",
     component: Dashboard,
     children: [...AuthRoutes],
+  },
+  {
+    name: "Counter",
+    path: "/counter",
+    component: Counter,
   },
   {
     name: "Login",

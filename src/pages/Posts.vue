@@ -39,26 +39,20 @@ export default {
     }
   },
   setup() {
-    const posts = ref([]);
-    const loading = ref(true);
+    onMounted(() => {});
 
-    const fetchPosts = () => {
-      const endpoint = "https://dummyjson.com/posts";
-
-      fetch(endpoint)
-        .then((response) => response.json())
-        .then((response) => (posts.value = response.posts))
-        .finally(() => (loading.value = false));
-    };
-
-    onMounted(() => {
-      fetchPosts();
-    });
-
-    return {
-      posts,
-      loading,
-    };
+    return {};
+  },
+  computed: {
+    posts() {
+      return this.$store.state.posts;
+    },
+    loading() {
+      return this.$store.state.loadingPosts;
+    },
+  },
+  mounted() {
+    this.$store.dispatch("getPosts");
   },
 };
 </script>
