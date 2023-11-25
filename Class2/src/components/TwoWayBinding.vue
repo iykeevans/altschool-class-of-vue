@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <form @submit.prevent="handleSubmit">
     <label>
       First Name <br />
       <input type="text" v-model="user.firstName" />
@@ -19,10 +19,12 @@
       <input type="text" v-model="user.age" />
     </label> -->
 
-    <button @click="clearInput">Clear Input</button>
+    <button @click="clearInput" type="button">Clear Input</button>
 
     <div>{{ fullName }}</div>
-  </div>
+
+    <button>Submit</button>
+  </form>
 </template>
 
 <script>
@@ -56,6 +58,9 @@ export default {
     },
     handleChange(event) {
       this.user.firstName = event.target.value;
+    },
+    handleSubmit() {
+      console.log("I am submitting");
     },
   },
   computed: {
