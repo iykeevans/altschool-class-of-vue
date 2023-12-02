@@ -13,7 +13,23 @@
   </VueSlots> -->
   <!-- <Emits /> -->
   <!-- <Inputs /> -->
-  <PokemonApiExample />
+  <h1>Hello App!</h1>
+  <div>
+    <!-- use the router-link component for navigation. -->
+    <!-- specify the link by passing the `to` prop. -->
+    <!-- `<router-link>` will render an `<a>` tag with the correct `href` attribute -->
+    <router-link
+      to="/"
+      class="border-b border-dashed border-black cursor-pointer"
+      >Go to Home</router-link
+    ><br />
+    <router-link
+      to="/about"
+      class="border-b border-dashed border-black cursor-pointer"
+      >Go to About</router-link
+    >
+  </div>
+  <router-view></router-view>
 </template>
 
 <script>
