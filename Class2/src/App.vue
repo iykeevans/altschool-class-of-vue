@@ -12,7 +12,8 @@
     </template>
   </VueSlots> -->
   <!-- <Emits /> -->
-  <Inputs />
+  <!-- <Inputs /> -->
+  <PokemonApiExample />
 </template>
 
 <script>
@@ -23,6 +24,7 @@ import TwoWayBinding from "./components/TwoWayBinding.vue";
 import VueSlots from "./components/VueSlots.vue";
 import Emits from "./components/Emits/Parent.vue";
 import Inputs from "./components/Inputs.vue";
+import PokemonApiExample from "./components/Projects/PokemonApiExample/index.vue";
 
 export default {
   components: {
@@ -33,6 +35,7 @@ export default {
     VueSlots,
     Emits,
     Inputs,
+    PokemonApiExample,
   },
 };
 </script>
